@@ -1,5 +1,5 @@
 # NodeRP
-[![Version](https://noderp.sk-jones.com/api/v1.svg)](https://github.com/Jones3106/NodeRP/releases)
+[![](https://noderp.sk-jones.com/api/v1.svg)](https://github.com/Jones3106/NodeRP/releases)
 
 ***NOTE: This framework is currently in ALPHA. If you find any bugs please report them and do not use it for production.***
 
@@ -38,7 +38,7 @@ NodeRP is a simple RP framework for FiveM written in JavaScript/NodeJS. It store
 - Start the server and enjoy
 
 ## Documentation
-You can find the documentation at [NodeRP Website](https://noderp.sk-jones.com:3000).
+You can find the documentation at [NodeRP Website](https://noderp.sk-jones.com).
 
 ## TODO
 ### V1.0.0 ALPHA
@@ -72,4 +72,10 @@ What should I do?
 
 **Q:** I'd like to support the development of this framework, who should I contact or what do I need to do?
 
-**A:** Support and Donations are welcomed and will keep the framework running. You can contact me on [Discord](https://discord.gg/g3rQsbA)(Jones#7051) or through [Email](mailto:thejones3106@gmail.com).
+**A:** Support and Donations are welcomed and will keep the framework running. You can contact me on [Discord](https://discord.gg/g3rQsbA)(Jones#7051) or through [Email](mailto:jones@sk-jones.com).
+
+## Screenshots
+![Discord Embed](https://i.imgur.com/rmp3oxV.png)
+![NodeRP Startup Messages First Time](https://i.imgur.com/esti5tA.png)
+![NodeRP Usual Startup Messages](https://i.imgur.com/1Zgfxm5.png)
+![NodeRP First generation spawn](https://i.imgur.com/Q5C5sNu.jpg)

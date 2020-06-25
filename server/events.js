@@ -50,7 +50,12 @@ on('playerConnecting', (name, setKickReason, deferrals) => {
 					let pos = JSON.stringify({x: -1070.906250, y: -2972.122803, z: 13.773568});
 					let newip = ip.slice("ip:");
 					var geo = exports['NodeRP']['GetGeoIP'](newip);
-					if (geo != null) PC = geo.country else PC = 'unknown';
+					if (geo != null) {
+						PC = geo.country;
+					}
+					else {
+						PC = 'unknown';
+					}
 					
 					const playerdata = [Identifier, license, discord, ip, skin, pos, PC];
 					
