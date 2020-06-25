@@ -48,7 +48,7 @@ You can find the documentation at [NodeRP Website](https://noderp.sk-jones.com).
 - [x] Release ALPHA version
 
 ### V2.0.0 BETA
-- [ ] Change player authentication from Steam to License
+- [x] Change player authentication from Steam to License
 - [x] Save player skin and position every x minutes
 - [ ] Spawn player at last position with last skin
 - [ ] Add menus, blips
