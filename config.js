@@ -4,15 +4,7 @@ Config.Locale = "en";											// Server Language like "en" which is for Englis
 Config.Identifier = "license";									// Identifier to use in NodeRP. License is recommended as it will work for everybody who owns GTA V.
 Config.EnableExtensions = true;									// Enable or disable Extensions found in the Extensions folder. Example of an Extension is Admin.
 Config.ServerName = "Unnamed Server";							// The server name that will be shown in Messages etc
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-Config.EnableAIPolice = false;									// Enable or disable the default game AI cops
-=======
-Config.EnableAIDispatch = false;								// Enable or disable the default game AI cops, medics, millitary etc
->>>>>>> Stashed changes
-=======
 Config.EnableAIDispatch = false;									// Enable or disable the default game AI cops, medics, millitary etc
->>>>>>> master
 
 Config.Logging = {
 	EnableLogging: true,
