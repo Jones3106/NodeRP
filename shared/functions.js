@@ -1,11 +1,27 @@
+<<<<<<< Updated upstream
 RegisterNetEvent('NodeRP.Server.Load');
 onNet('NodeRP.Server.Load', function (cb) {
 	return cb(NodeRP);
 });
+=======
+exports('NodeRP.Server.GetPlayerIdentifier', NodeRP.Server.GetPlayerIdentifier);
+
+NodeRP.Server.GetPlayerIdentifier = function (player, name) {
+	if (player != null && name != null) {
+		for (let i = 0; i < GetNumPlayerIdentifiers(player); i++) {
+			const identifier = GetPlayerIdentifier(player, i);
+
+			if (identifier.includes(`${name}:`)) {
+				return identifier;
+			}
+		}
+	}
+}
+>>>>>>> Stashed changes
 
 exports('NodeRP.Server.GetAdminLevel', (id, cb) => {
 	let mylvl = null;
-	let identifier = GetPlayerIdentifier(id, 0);
+	let identifier = NodeRP.Server.GetPlayerIdentifier(id, Config.Identifier);
 	
 	NodeRP.DB.Query('SELECT adminlevel FROM players WHERE identifier = ?', identifier, function (err, result, fields) {
 		if(err) throw err;
@@ -23,7 +39,7 @@ exports('NodeRP.Server.GetAdminLevel', (id, cb) => {
 
 exports('NodeRP.Server.GetPos', (id, cb) => {
 	let mypos = null;
-	let identifier = GetPlayerIdentifier(id, 0);
+	let identifier = NodeRP.Server.GetPlayerIdentifier(id, Config.Identifier);
 	
 	NodeRP.DB.Query('SELECT pos FROM players WHERE identifier = ?', identifier, function (err, result, fields) {
 		if(err) throw err;
@@ -41,7 +57,7 @@ exports('NodeRP.Server.GetPos', (id, cb) => {
 
 exports('NodeRP.Server.GetPlayerData', (id, cb) => {
 	let data = null;
-	let identifier = GetPlayerIdentifier(id, 0);
+	let identifier = NodeRP.Server.GetPlayerIdentifier(id, Config.Identifier);
 	
 	NodeRP.DB.Query('SELECT * FROM players WHERE identifier = ?', identifier, function (err, result, fields) {
 		if(err) throw err;
@@ -62,7 +78,7 @@ exports('NodeRP.Server.SavePlayer', (id, cb) => {
 		if (NodeRP.Player[id]['Skin'] == null) NodeRP.Player[id].Skin = 'test';
 		
 		let data = null;
-		let identifier = GetPlayerIdentifier(id, 0);
+		let identifier = NodeRP.Server.GetPlayerIdentifier(id, Config.Identifier);
 		let skin = NodeRP.Player[id].Skin, pos = JSON.stringify(NodeRP.Player[id].Pos), level = NodeRP.Player[id].Level, job = NodeRP.Player[id].Job, job_rank = NodeRP.Player[id].Job_rank, loadout = NodeRP.Player[id].Loadout, dead = NodeRP.Player[id].Dead;
 		let playa = [skin, pos, level, job, job_rank, loadout, dead];
 		

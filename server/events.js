@@ -9,9 +9,9 @@ on('playerConnecting', (name, setKickReason, deferrals) => {
 	const player = global.source;
 
     setTimeout(() => {
-        deferrals.update(`Hello ${name}. Your steam ID is being checked.`)
+        deferrals.update(`Hello ${name}. Your ID is being checked.`)
 		
-        let steamIdentifier = null;
+        let Identifier = null;
 		let ip = null;
 		let license = null;
 		let discord = null;
@@ -20,8 +20,8 @@ on('playerConnecting', (name, setKickReason, deferrals) => {
         for(let i = 0; i < GetNumPlayerIdentifiers(player); i++) {
             const identifier = GetPlayerIdentifier(player, i);
 
-            if (identifier.includes('steam:')) {
-                steamIdentifier = identifier;
+            if (identifier.includes(`${Config.Identifier}:`)) {
+                Identifier = identifier;
             }
 			
 			if (identifier.includes('ip:')) {
@@ -39,20 +39,20 @@ on('playerConnecting', (name, setKickReason, deferrals) => {
 
         // pretend to be a wait
         setTimeout(() => {
-            if (steamIdentifier === null) {
-                deferrals.done("You are not connected to Steam.")
+            if (Identifier === null) {
+                deferrals.done(NodeRP.Locales[Config.Locale]['iden_not_found'])
             } else {
-				NodeRP.DB.Query('SELECT * FROM players WHERE identifier = ?', steamIdentifier, function (err, result, fields) {
+				NodeRP.DB.Query('SELECT * FROM players WHERE identifier = ?', Identifier, function (err, result, fields) {
 				  if(err) throw err;
 
 				  if(result[0] == null || result[0].identifier == null) {
 					let skin = "mp_m_freemode_01";
-					let pos = JSON.stringify({X: -1070.906250, Y: -2972.122803, Z: 13.773568});
+					let pos = JSON.stringify({x: -1070.906250, y: -2972.122803, z: 13.773568});
 					let newip = ip.slice("ip:");
 					var geo = exports['NodeRP']['GetGeoIP'](newip);
 					if (geo != null) PC = geo.country else PC = 'unknown';
 					
-					const playerdata = [steamIdentifier, license, discord, ip, skin, pos, PC];
+					const playerdata = [Identifier, license, discord, ip, skin, pos, PC];
 					
 					NodeRP.DB.Query('INSERT INTO players (identifier, license, discord, ip, skin, pos, country) VALUES (?, ?, ?, ?, ?, ?, ?)', playerdata, (err, res) => {
 						if(err) throw err;
@@ -60,7 +60,7 @@ on('playerConnecting', (name, setKickReason, deferrals) => {
 						NodeRP.Player[player] = {};
 						NodeRP.Player[player].Pos = JSON.parse(pos);
 						NodeRP.Player[player].Skin = skin;
-						NodeRP.Player[player].Steam = steamIdentifier;
+						NodeRP.Player[player].Identifier = Identifier;
 						NodeRP.Player[player].firstspawn = true;
 						NodeRP.Player[player].Dead = 0;
 						NodeRP.Player[player].Loadout = {};
@@ -76,7 +76,7 @@ on('playerConnecting', (name, setKickReason, deferrals) => {
 					NodeRP.Player[player] = {};
 					NodeRP.Player[player].Pos = JSON.parse(result[0].pos);
 					NodeRP.Player[player].Skin = result[0].skin;
-					NodeRP.Player[player].Steam = result[0].identifier;
+					NodeRP.Player[player].Identifier = result[0].identifier;
 					NodeRP.Player[player].Dead = result[0].dead;
 					NodeRP.Player[player].Loadout = result[0].loadout;
 					NodeRP.Player[player].Level = result[0].adminlevel;
@@ -97,7 +97,7 @@ on('playerConnecting', (name, setKickReason, deferrals) => {
 				});
 				
 				let embedip = ip.slice('ip:');
-				let embedsteam = steamIdentifier.slice('steam:');
+				let embedsteam = Identifier;
 				let embeddiscord = discord.slice('discord:');
 				
 				if (PC == null) PC = 'Unknown';
@@ -113,7 +113,7 @@ on('playerConnecting', (name, setKickReason, deferrals) => {
 					inline: true
 				},
 				{
-					name: `Steam Identifier`,
+					name: `Identifier`,
 					value: embedsteam,
 					inline: true
 				},
@@ -203,7 +203,7 @@ NodeRP.Server.SavePlayers = function() {
 		console.log(`YEYE: ${pidx}`);
 		const player = GetPlayerFromIndex(pidx);
 		console.log(`PLAYA: ${player}`);
-		let curid = GetPlayerIdentifier(player, 0);
+		let curid = NodeRP.Server.GetPlayerIdentifier(player, Config.Identifier);
 		let pos = JSON.stringify(NodeRP.Player[player].Pos), skin = NodeRP.Player[player].Skin, dead = NodeRP.Player[player].Dead;
 		let loadout = NodeRP.Player[player].Loadout, level = NodeRP.Player[player].Level, job = NodeRP.Player[player].Job, job_rank = NodeRP.Player[player].Job_rank, country = NodeRP.Player[player].Country;
 		let playa = [skin, pos, level, job, job_rank, loadout, dead, country];

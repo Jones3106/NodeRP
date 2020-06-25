@@ -7,9 +7,14 @@ NodeRP.Player = {};
 NodeRP.Commands = {};
 
 Config.Locale = "en";											// Server Language like "en" which is for English. Look inside locales folder for other language translations
+Config.Identifier = "license";									// Identifier to use in NodeRP. License is recommended as it will work for everybody who owns GTA V.
 Config.EnableExtensions = true;									// Enable or disable Extensions found in the Extensions folder. Example of an Extension is Admin.
 Config.ServerName = "Unnamed Server";							// The server name that will be shown in Messages etc
+<<<<<<< Updated upstream
 Config.EnableAIPolice = false;									// Enable or disable the default game AI cops
+=======
+Config.EnableAIDispatch = false;								// Enable or disable the default game AI cops, medics, millitary etc
+>>>>>>> Stashed changes
 
 Config.Logging = {
 	EnableLogging: true,
@@ -31,6 +36,6 @@ Config.ARanks = {												// You can define as many admin ranks as you want h
 Config.DB = {
 	User: "root",		 	// 	Your Database username
 	Pass: "test",			// 	Your Database password
-	Host: "localhost",			//	Your Database hostname
+	Host: "localhost",		//	Your Database hostname
 	Name: "noderp"			// 	Name of the Database that you want to use
 };

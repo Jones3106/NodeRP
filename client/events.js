@@ -3,20 +3,14 @@ on('onClientGameTypeStart', () => {
   let mdl = NodeRP.Player[GetPlayerServerId(PlayerId())].Skin;
   
   if (pos == null) pos = {x: 686.245, y: 577.950, z: 130.461};
-  if (mdl == null) mdl = 'a_m_m_skater_01';
+  if (mdl == null) mdl = GetHashKey('a_m_m_skater_01');
   
   exports.spawnmanager.setAutoSpawnCallback(() => {
     exports.spawnmanager.spawnPlayer({
-      x: pos['x'],
-      y: pos['y'],
-      z: pos['z'],
+      x: pos[0],
+      y: pos[1],
+      z: pos[2],
       model: mdl
-    }, () => {
-      emit('chat:addMessage', {
-        args: [
-          `${NodeRP.Locales[Config.Locale]["welcome_msg"]}`
-        ]
-      })
     });
   });
 

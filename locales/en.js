@@ -14,14 +14,15 @@ NodeRP.Locales["en"] = {
 	"Global_Chat": "[GLOBAL]",
 	"invalid_cmd": "^1Invalid ^0cmd, ^0type ^2/cmds^0 to take a look at the commands available.",
 	"Available_Commands": "List of available commands",
-	"cmd_exists": "is already registered. Skipping."
+	"cmd_exists": "is already registered. Skipping.",
+	"iden_not_found": `Your Identifier (${Config.Identifier}) could not be found. Please try reconnecting.`
 };
 
 NodeRP.Locales["en"]["chat_suggestions"] = {
-	"localchat": `{ help: 'Talk with players near you', arguments: { { name: 'text', help: 'Message' } } }`,
-	"shoutchat": `{ help: 'Shout at players near you', arguments: { { name: 'text', help: 'Message' } } }`,
-	"me": `{ help: 'Do an action', arguments: { { name: 'text', help: 'Text' } } }`,
-	"do": `{ help: 'Describe something related to your action', arguments: { { name: 'text', help: 'Text' } } }`,
-	"cmds": `{ help: 'Shows a list of available commands' }`,
-	"admins": `{ help: 'Shows a list of online administrators' }`
+	"localchat": `{ 'help': 'Talk with players near you', 'arguments': { { 'name': 'text', 'help': 'Message' } } }`,
+	"shoutchat": `{ 'help': 'Shout at players near you', 'arguments': { { 'name': 'text', 'help': 'Message' } } }`,
+	"me": `{ 'help': 'Do an action', 'arguments': { { 'name': 'text', 'help': 'Text' } } }`,
+	"do": `{ 'help': 'Describe something related to your action', 'arguments': { { 'name': 'text', 'help': 'Text' } } }`,
+	"cmds": `{ 'help': 'Shows a list of available commands' }`,
+	"admins": `{ 'help': 'Shows a list of online administrators' }`
 };

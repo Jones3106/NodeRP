@@ -56,7 +56,7 @@ NodeRP.Server.RegisterCommand("admins", "player", async (source, args) => {
 		
 				for (let pidx = 0; pidx < numIndices; pidx++) {
 					const player = GetPlayerFromIndex(pidx);
-					let curid = GetPlayerIdentifier(player, 0);
+					let curid = NodeRP.Server.GetPlayerIdentifier(player, Config.Identifier);
 					
 					if (curid == dbid) {
 						let rank = Config.ARanks[alvl];
